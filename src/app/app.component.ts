@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -6,16 +6,25 @@ import { ChangeDetectorRef, Component } from '@angular/core';
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'projeto6-angular';
 
-  constructor (
-    private _cdRef: ChangeDetectorRef
-  ) {}
+  //Aula 99 Acessar Elemento HMTL com ViewChild
+  // @ViewChild('meuInput') 
+  // meuInputEL!: ElementRef<HTMLInputElement>;
 
-  changeDetection()
-  {
-    this._cdRef.detectChanges();
-  }
+  // @ViewChild('divInicial') 
+  // divInicial!: ElementRef<HTMLDivElement>;
+
+  // updateInputText(){
+  //   this.meuInputEL.nativeElement.value = 'Texto Atualizado';
+  // }
+
+  // foco(){
+  //   this.meuInputEL.nativeElement.focus();
+  // }
+  
+  // updateDivContent(){
+  //   this.divInicial.nativeElement.textContent = 'AAAHHHH';
+  // }
 
 
 }
