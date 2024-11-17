@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { FilhoComponent } from './filho/filho.component';
 
 @Component({
@@ -6,7 +6,7 @@ import { FilhoComponent } from './filho/filho.component';
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
-export class AppComponent implements OnInit, AfterViewInit {
+export class AppComponent implements AfterViewInit{
 
   //Aula 99 Acessar Elemento HMTL com ViewChild
   // @ViewChild('meuInput') 
@@ -52,7 +52,58 @@ export class AppComponent implements OnInit, AfterViewInit {
   // }
 
   // ngAfterViewInit() {
-  //   this.meuInputEL.nativeElement.focus();
   // }
+
+  buttonsList = [
+    'Botão 1',
+    'Botão 2',
+    'Botão 3',
+  ];
+
+  @ViewChildren('meuButton')
+    buttonsEL!: QueryList<ElementRef<HTMLButtonElement>>;
+
+  ngAfterViewInit(): void {
+
+    //Esse método é chamado toda vezque a estrutura do viewChild é alterada. 
+    this.buttonsEL.changes.subscribe((result) => {
+      console.log(result)
+    });
+  
+  }
+
+  changeColor(event: Event){
+
+    const btnElement = event.target as HTMLButtonElement;
+
+    btnElement.style.backgroundColor = 'red';
+    btnElement.style.color = 'blue';
+
+  }
+
+  resetButton(){
+    this.buttonsEL.forEach(
+      (btnEl) => {
+        btnEl.nativeElement.style.backgroundColor = '';
+        btnEl.nativeElement.style.color = 'black';
+      }
+    )
+  }
+
+  firstButton(){
+    //const primeiro = this.buttonsEL.get(0);
+
+    const primeiro = this.buttonsEL.find((btnEl) => btnEl.nativeElement.className === 'btn-0');
+
+  }
+
+  remove() {
+    //Esse método é nativo e remove o primeiro item da lista
+    this.buttonsList.shift();
+  }
+
+
+
+
 
 }
