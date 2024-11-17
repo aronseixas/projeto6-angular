@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FilhoComponent } from './filho/filho.component';
 
 @Component({
@@ -6,7 +6,7 @@ import { FilhoComponent } from './filho/filho.component';
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
-export class AppComponent {
+export class AppComponent implements OnInit, AfterViewInit {
 
   //Aula 99 Acessar Elemento HMTL com ViewChild
   // @ViewChild('meuInput') 
@@ -38,5 +38,21 @@ export class AppComponent {
   //   this.filhoCompRef.message = 'Eu troquei';
   // }
 
+  // Aula 101 - Configuração "static" do "@ViewChild”
+
+  // @ViewChild('meuInput') 
+  // meuInputEL!: ElementRef<HTMLInputElement>;
+
+  // constructor() {
+    
+  // }
+
+  // ngOnInit() {
+    
+  // }
+
+  // ngAfterViewInit() {
+  //   this.meuInputEL.nativeElement.focus();
+  // }
 
 }
