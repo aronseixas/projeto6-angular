@@ -1,4 +1,5 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { FilhoComponent } from './filho/filho.component';
 
 @Component({
   selector: 'app-root',
@@ -24,6 +25,17 @@ export class AppComponent {
   
   // updateDivContent(){
   //   this.divInicial.nativeElement.textContent = 'AAAHHHH';
+  // }
+
+  // Video 100 - Acessar componente filhos por ViewChild
+
+  // @ViewChild('filhoComp')
+  // filhoCompRef!: FilhoComponent;
+
+  // hello() {
+  //   this.filhoCompRef.dizerOi();
+
+  //   this.filhoCompRef.message = 'Eu troquei';
   // }
 
 
